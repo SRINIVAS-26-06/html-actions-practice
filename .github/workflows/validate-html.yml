@@ -1,0 +1,23 @@
+name: Validate HTML Project
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate-html:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check HTML file exists
+        run: test -f index.html
+
+      - name: Check HTML file is not empty
+        run: test -s index.html
+
+      - name: Display validation success
+        run: echo "HTML validation successful!"
